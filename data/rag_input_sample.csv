@@ -1,0 +1,4 @@
+id,input,actual_output,expected_output,retrieval_context
+1,"Chinh sach doi tra trong bao nhieu ngay?","Ban co the doi tra trong 30 ngay ke tu ngay mua.","Khach hang duoc doi tra trong 30 ngay.","[""Tat ca khach hang duoc doi tra trong 30 ngay ke tu ngay mua."",""Can giu hoa don mua hang khi doi tra.""]"
+2,"Phi giao hang noi thanh la bao nhieu?","Phi giao hang noi thanh la 20.000 VND.","Don hang noi thanh co phi giao hang 15.000 VND.","[""Don hang noi thanh co phi giao hang 15.000 VND."",""Mien phi giao hang cho don tren 500.000 VND.""]"
+3,"San pham co bao hanh khong?","San pham duoc bao hanh 12 thang.","San pham chinh hang bao hanh 12 thang.","[""Tat ca san pham chinh hang duoc bao hanh 12 thang."",""Khong ap dung bao hanh cho hao mon tu nhien.""]"

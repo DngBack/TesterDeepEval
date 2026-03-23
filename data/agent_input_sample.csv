@@ -1,0 +1,4 @@
+id,input,actual_output,expected_output,tools_called,expected_tools
+1,"Tim thoi tiet Ha Noi ngay mai va tom tat ngan gon.","Ngay mai Ha Noi 22-28 do C, co mua nhe. Nen mang ao mua.","Du bao ngay mai tai Ha Noi can nhiet do va kha nang mua, tom tat ngan gon.","[""WeatherAPI""]","[""WeatherAPI""]"
+2,"Tinh tong chi phi chuyen di gom ve may bay 120 va khach san 300.","Tong chi phi la 450.","Tong chi phi dung la 420.","[""Calculator""]","[""Calculator""]"
+3,"Dat lich hop 15h thu Sau voi team marketing.","Da tao su kien lich hop 15h thu Sau cho team marketing.","Agent can dat lich hop 15h thu Sau voi team marketing.","[""CalendarTool"",""NotificationTool""]","[""CalendarTool""]"
