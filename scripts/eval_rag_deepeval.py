@@ -96,6 +96,7 @@ def load_prompt_config(path: Optional[str], section: str) -> Dict[str, Any]:
         return {}
     if not isinstance(section_data, dict):
         raise ValueError(f"Prompt config section '{section}' must be a JSON object.")
+    print(section_data)
     return section_data
 
 
@@ -190,13 +191,14 @@ def validate_columns(df: pd.DataFrame, required_columns: List[str]) -> None:
 
 def main():
     load_dotenv()
-
+    
+    # Parameters
     parser = argparse.ArgumentParser(description="Evaluate RAG outputs with DeepEval.")
     parser.add_argument("--input", required=True, help="Input CSV path.")
     parser.add_argument("--output", default="outputs/rag_scores.csv", help="Detailed output CSV path.")
     parser.add_argument("--summary", default="outputs/rag_summary.csv", help="Summary output CSV path.")
     parser.add_argument("--threshold", type=float, default=0.5, help="Pass threshold for metrics.")
-    parser.add_argument("--model", default=None, help="Judge model override (e.g. gpt-4.1).")
+    parser.add_argument("--model", default='gpt-5-mini', help="Judge model override (e.g. gpt-4.1).")
     parser.add_argument(
         "--prompt-config",
         default=None,
@@ -204,14 +206,16 @@ def main():
     )
     args = parser.parse_args()
 
+    # check input exist
     input_path = Path(args.input)
     if not input_path.exists():
         raise FileNotFoundError(f"Input CSV not found: {input_path}")
 
+
     df = pd.read_csv(input_path)
-    validate_columns(df, REQUIRED_COLUMNS)
-    prompt_config = load_prompt_config(args.prompt_config, "rag")
-    metrics = build_metrics(args.threshold, args.model, prompt_config)
+    validate_columns(df, REQUIRED_COLUMNS) # Check columns correct
+    prompt_config = load_prompt_config(args.prompt_config, "rag") # Load prompt from prompt path
+    metrics = build_metrics(args.threshold, args.model, prompt_config) # Build metrics
 
     results = []
     for idx, row in df.iterrows():
@@ -220,9 +224,9 @@ def main():
         results.append({"id": row_id, **score_data})
 
     result_df = pd.DataFrame(results)
-    output_path = Path(args.output)
+    output_path = Path(args.output) 
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    result_df.to_csv(output_path, index=False)
+    result_df.to_csv(output_path, index=False) # Save output in file
 
     summary_dict: Dict[str, Any] = {"rows": len(result_df)}
     for col in METRIC_COLUMNS + ["overall_score"]:
