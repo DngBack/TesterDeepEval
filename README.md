@@ -298,3 +298,45 @@ python scripts/run_all_evals.py \
 
 - Loi thieu cot CSV
   - Doi ten header dung theo muc 5.1 (RAG) va 6.1 (Agent).
+
+---
+
+## 11) Custom prompt khi danh gia (DeepEval)
+
+Da ho tro custom prompt/criteria theo tung metric qua file JSON:
+- `scripts/eval_rag_deepeval.py`: them `--prompt-config`
+- `scripts/eval_agent_deepeval.py`: them `--prompt-config`
+- `scripts/run_all_evals.py`: them `--prompt-config` (ap dung cho ca 2), hoac rieng:
+  - `--rag-prompt-config`
+  - `--agent-prompt-config`
+
+File mau: `data/prompt_config_sample.json`
+
+Format:
+- Co the dat theo section `rag` va `agent`.
+- Moi metric co the la:
+  - String: dung lam `criteria`.
+  - Object:
+    - `criteria`: chuoi tieu chi cham diem.
+    - `evaluation_steps`: list cac buoc cham diem (tuy chon).
+
+Vi du chay RAG voi prompt custom:
+
+```bash
+python scripts/eval_rag_deepeval.py \
+  --input data/rag_input_sample.csv \
+  --output outputs/rag_scores.csv \
+  --summary outputs/rag_summary.csv \
+  --threshold 0.5 \
+  --prompt-config data/prompt_config_sample.json
+```
+
+Vi du chay ca RAG + Agent voi 1 file config:
+
+```bash
+python scripts/run_all_evals.py \
+  --rag-input data/rag_input_sample.csv \
+  --agent-input data/agent_input_sample.csv \
+  --threshold 0.5 \
+  --prompt-config data/prompt_config_sample.json
+```

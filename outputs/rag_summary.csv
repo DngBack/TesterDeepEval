@@ -1,0 +1,2 @@
+rows,avg_answer_relevancy,avg_faithfulness,avg_contextual_precision,avg_contextual_recall,avg_contextual_relevancy,avg_overall_score,pass_rate_answer_relevancy,pass_rate_faithfulness,pass_rate_contextual_precision,pass_rate_contextual_recall,pass_rate_contextual_relevancy
+3,1.0,0.5,1.0,1.0,0.8333333333333334,0.8916666666666666,1.0,0.3333333333333333,1.0,1.0,1.0

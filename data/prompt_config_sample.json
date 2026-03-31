@@ -1,0 +1,24 @@
+{
+  "rag": {
+    "answer_relevancy": {
+      "criteria": "Cham diem muc do ACTUAL_OUTPUT tra loi dung trong tam INPUT, uu tien tinh ro rang va dung trong tam.",
+      "evaluation_steps": [
+        "Xac dinh muc tieu chinh cua INPUT.",
+        "Kiem tra ACTUAL_OUTPUT co tra loi truc tiep muc tieu hay khong.",
+        "Tru diem noi dung lac de, thieu y, hoac khong tra loi cau hoi."
+      ]
+    },
+    "faithfulness": "Cham diem muc do ACTUAL_OUTPUT trung thuc voi RETRIEVAL_CONTEXT, phat hien thong tin khong co trong context."
+  },
+  "agent": {
+    "task_completion": {
+      "criteria": "Danh gia agent co hoan thanh yeu cau trong INPUT theo EXPECTED_OUTPUT khong, uu tien ket qua dung va day du.",
+      "evaluation_steps": [
+        "Doi chieu INPUT voi EXPECTED_OUTPUT de xac dinh ket qua can dat.",
+        "Kiem tra ACTUAL_OUTPUT co dat dung ket qua va muc do day du.",
+        "Tru diem neu co buoc thua, sai, hoac bo sot thong tin quan trong."
+      ]
+    },
+    "tool_correctness": "Danh gia TOOLS_CALLED so voi EXPECTED_TOOLS: dung tool can thiet, khong goi thua, khong bo sot tool quan trong."
+  }
+}
